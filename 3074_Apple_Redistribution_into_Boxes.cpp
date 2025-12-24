@@ -1,27 +1,31 @@
+/*
+LeetCode 3074 - Apple Redistribution into Boxes
+Difficulty: Easy
+Topic: Greedy, Sorting
+
+Approach:
+1. Calculate total number of apples.
+2. Sort box capacities in descending order.
+3. Select boxes greedily until total capacity >= total apples.
+
+Time Complexity: O(n log n)
+Space Complexity: O(1)
+*/
+
 class Solution {
 public:
     int minimumBoxes(vector<int>& apple, vector<int>& capacity) {
-        // Step 1: Calculate total apples
         int totalApples = 0;
-        for (int a : apple) {
-            totalApples += a;
-        }
+        for (int a : apple) totalApples += a;
 
-        // Step 2: Sort capacities in descending order
         sort(capacity.begin(), capacity.end(), greater<int>());
 
-        // Step 3: Select boxes greedily
-        int currentCapacity = 0;
-        int boxCount = 0;
-
+        int curr = 0, boxes = 0;
         for (int cap : capacity) {
-            currentCapacity += cap;
-            boxCount++;
-            if (currentCapacity >= totalApples) {
-                return boxCount;
-            }
+            curr += cap;
+            boxes++;
+            if (curr >= totalApples) return boxes;
         }
-
-        return boxCount; // guaranteed solution exists
+        return boxes;
     }
 };
