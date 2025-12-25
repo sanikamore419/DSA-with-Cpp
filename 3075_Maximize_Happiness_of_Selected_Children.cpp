@@ -1,4 +1,22 @@
+/*
+    LeetCode 3075
+    Maximize Happiness of Selected Children
 
+    Approach:
+    ----------
+    Greedy + Sorting
+
+    - Sort the happiness array in descending order.
+    - At each selection, happiness of remaining children decreases by 1.
+    - For the i-th selected child, effective happiness is:
+          max(happiness[i] - i, 0)
+    - Pick the top k children greedily to maximize total happiness.
+
+    Time Complexity: O(n log n)
+    Space Complexity: O(1) (excluding sorting)
+
+    Author: Sanika
+*/
 
 #include <bits/stdc++.h>
 using namespace std;
