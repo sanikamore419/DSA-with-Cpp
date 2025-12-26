@@ -1,4 +1,34 @@
+/*
+--------------------------------------------------------
+LeetCode 2483: Minimum Penalty for a Shop
+Difficulty: Medium
 
+Problem Summary:
+- Given a string consisting of 'Y' and 'N'
+- 'Y' -> customers come at that hour
+- 'N' -> no customers come
+
+Penalty Rules:
+1. Shop is OPEN and no customers ('N') -> penalty +1
+2. Shop is CLOSED and customers come ('Y') -> penalty +1
+
+Goal:
+Return the EARLIEST hour to close the shop such that
+the total penalty is minimized.
+
+Approach:
+- Count total number of 'Y' initially.
+- Iterate through each possible closing hour.
+- Maintain:
+  LN = number of 'N' before closing (open but empty)
+  Y  = number of 'Y' before closing
+- Remaining 'Y' after closing = totalY - Y
+- Penalty = LN + remainingY
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+--------------------------------------------------------
+*/
 
 #include <bits/stdc++.h>
 using namespace std;
