@@ -1,5 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
+/*
+Author: Sanika
+
+Problem:
+1970. Last Day Where You Can Still Cross
+
+Concepts Used:
+- Binary Search on Answer
+- Breadth First Search (BFS)
+- Grid Traversal
+- Monotonic Property
+
+Approach:
+- As days increase, more cells become water and crossing becomes harder.
+- Use binary search to find the last day when crossing is possible.
+- For a given day, simulate the grid and flood cells up to that day.
+- Start BFS from all land cells in the top row.
+- If any path reaches the bottom row, crossing is possible for that day.
+
+Time Complexity:
+O((row * col) * log(row * col))
+
+Space Complexity:
+O(row * col)
+*/
 
 
 class Solution {
