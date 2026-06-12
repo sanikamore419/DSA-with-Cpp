@@ -1,5 +1,7 @@
 class Solution {
 public:
+    static const int MOD = 1e9 + 7;
+
     int LOG;
     vector<vector<int>> adj, up;
     vector<int> depth;
@@ -62,6 +64,17 @@ public:
 
         dfs(1, -1);
 
-        return {};
+        vector<int> ans;
+
+        for (auto &q : queries) {
+            int u = q[0], v = q[1];
+
+            int ancestor = lca(u, v);
+            int len = depth[u] + depth[v] - 2 * depth[ancestor];
+
+            ans.push_back(len);
+        }
+
+        return ans;
     }
 };
