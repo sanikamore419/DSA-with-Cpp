@@ -64,6 +64,12 @@ public:
 
         dfs(1, -1);
 
+        vector<int> pow2(n + 1);
+        pow2[0] = 1;
+
+        for (int i = 1; i <= n; i++)
+            pow2[i] = (2LL * pow2[i - 1]) % MOD;
+
         vector<int> ans;
 
         for (auto &q : queries) {
@@ -72,7 +78,10 @@ public:
             int ancestor = lca(u, v);
             int len = depth[u] + depth[v] - 2 * depth[ancestor];
 
-            ans.push_back(len);
+            if (len == 0)
+                ans.push_back(0);
+            else
+                ans.push_back(pow2[len - 1]);
         }
 
         return ans;
