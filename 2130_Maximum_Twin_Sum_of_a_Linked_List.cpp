@@ -30,6 +30,17 @@ public:
             slow = nextNode;
         }
 
-        return 0;
+        // Find maximum twin sum
+        int ans = 0;
+        ListNode* first = head;
+        ListNode* second = prev;
+
+        while (second != nullptr) {
+            ans = max(ans, first->val + second->val);
+            first = first->next;
+            second = second->next;
+        }
+
+        return ans;
     }
 };
