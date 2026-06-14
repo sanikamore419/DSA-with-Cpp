@@ -12,6 +12,24 @@
 class Solution {
 public:
     int pairSum(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
 
+        // Find middle node
+        while (fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        // Reverse second half
+        ListNode* prev = nullptr;
+        while (slow != nullptr) {
+            ListNode* nextNode = slow->next;
+            slow->next = prev;
+            prev = slow;
+            slow = nextNode;
+        }
+
+        return 0;
     }
 };
